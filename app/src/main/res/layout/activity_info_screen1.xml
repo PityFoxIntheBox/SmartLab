@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InfoScreen1">
+
+    <TextView
+        android:layout_width="111dp"
+        android:layout_height="26dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Пропустить"
+        android:textColor="#57A9FF"
+        android:fontFamily="@font/lato_regular"
+        android:textSize="20dp"
+        />
+
+    <View
+        android:layout_width="167dp"
+        android:layout_height="163dp"
+        android:background="@drawable/plus"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="207dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="95dp"
+        android:layout_marginTop="273dp"
+        android:fontFamily="@font/lato_regular"
+        android:text="Анализы"
+        android:textAlignment="center"
+        android:textColor="#00B712"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginLeft="95dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/lato_regular"
+        android:text="Экспресс сбор и получение проб"
+        android:textAlignment="center"
+        android:textColor="#939396"
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="12.61dp"
+        android:layout_height="12.61dp"
+        android:layout_marginLeft="175dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/fill_dot"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="12.61dp"
+        android:layout_height="12.61dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/empty_dot"
+        app:layout_constraintStart_toEndOf="@+id/view"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <View
+        android:layout_width="12.61dp"
+        android:layout_height="12.61dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/empty_dot"
+        app:layout_constraintStart_toEndOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <View
+        android:layout_width="204dp"
+        android:layout_height="200dp"
+        android:background="@drawable/bulbs"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2"
+        android:layout_marginTop="105dp"
+        android:layout_marginLeft="95dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
