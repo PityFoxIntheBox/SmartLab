@@ -113,7 +113,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="24dp"
-            android:background="@drawable/backmail"
+            android:background="@drawable/back_spinner"
             android:inputType="date"
             android:paddingLeft="14dp" />
     </LinearLayout>
