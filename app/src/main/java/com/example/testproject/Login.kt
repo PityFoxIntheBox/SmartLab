@@ -23,11 +23,27 @@ class Login : AppCompatActivity(),TextWatcher {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
         binding!!.editTextTextEmailAddress.addTextChangedListener(this)
-        binding!!.button.setOnClickListener { APIob.retrofitService.SendCodeOnEmail(binding!!.editTextTextEmailAddress.text.toString())
-            val intent: Intent = Intent(this@Login, Login::class.java)
-            startActivity(intent)}
+            binding!!.button.setOnClickListener {
+                APIob.retrofitService.SendCodeOnEmail(binding!!.editTextTextEmailAddress.text.toString())
+                    .enqueue(object : Callback<String> {
 
-    }
+                        override fun onFailure(call: Call<String>, t: Throwable) {
+
+                            Toast.makeText(this@Login, t.message, Toast.LENGTH_LONG).show()
+
+                        }
+
+                        override fun onResponse(call: Call<String>, response: Response<String>) {
+
+                            APIob.User_mail = binding!!.editTextTextEmailAddress.text.toString()
+                            val intent: Intent = Intent(this@Login, code_input::class.java)
+                            startActivity(intent)
+                        }
+                    })
+            }
+        }
+
+
 
         /*fun sendCode(view: View)
     {
