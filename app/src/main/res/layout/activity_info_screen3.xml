@@ -17,6 +17,7 @@
         android:textColor="#57A9FF"
         android:fontFamily="@font/lato_regular"
         android:textSize="20dp"
+        android:onClick="skip"
         />
 
     <View

@@ -37,10 +37,10 @@
             android:name=".InfoScreen1"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".UserPage"
             android:exported="false" />
         <activity
-            android:name=".UserPage"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
