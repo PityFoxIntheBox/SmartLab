@@ -23,30 +23,13 @@ class Login : AppCompatActivity(),TextWatcher {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
         binding!!.editTextTextEmailAddress.addTextChangedListener(this)
-        binding!!.button.setOnClickListener{
-            APIob.retrofitService.SendCodeOnEmail(binding!!.editTextTextEmailAddress.text.toString())
-                .enqueue(object : Callback<String> {
+        binding!!.button.setOnClickListener { APIob.retrofitService.SendCodeOnEmail(binding!!.editTextTextEmailAddress.text.toString())
+            val intent: Intent = Intent(this@Login, Login::class.java)
+            startActivity(intent)}
 
-                    override fun onFailure(call: Call<String>, t: Throwable) {
-
-                        Toast.makeText(this@Login, t.message, Toast.LENGTH_LONG).show()
-
-                    }
-
-                    override fun onResponse(call: Call<String>, response: Response<String>) {
-
-                        if (response.code() == 200) {
-                            APIob.User_mail = binding!!.editTextTextEmailAddress.text.toString()
-                            val intent: Intent = Intent(this@Login, code_input::class.java)
-                            startActivity(intent)
-                        }
-
-                    }
-                })
-        }
     }
 
-    /*fun sendCode(view: View)
+        /*fun sendCode(view: View)
     {
         APIob.retrofitService.SendCodeOnEmail(binding!!.editTextTextEmailAddress.text.toString())
             .enqueue(object : Callback<String> {
@@ -70,33 +53,32 @@ class Login : AppCompatActivity(),TextWatcher {
 
     }*/
 
-    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-        checkEmail()
-    }
-
-    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-        checkEmail()
-    }
-
-    override fun afterTextChanged(s: Editable?) {
-        checkEmail()
-    }
-
-    private fun checkEmail()
-    {
-        if(binding != null)
-        {
-            if(Regex("^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$").containsMatchIn(binding!!.editTextTextEmailAddress.text)) {
-                binding!!.button.isEnabled = true
-                binding!!.button.setBackgroundResource(R.drawable.color_button)
-            }
-            else
-            {
-                binding!!.button.isEnabled = false
-                binding!!.button.setBackgroundResource(R.drawable.uncolor_button)
-            }
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            checkEmail()
         }
 
-    }
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            checkEmail()
+        }
+
+        override fun afterTextChanged(s: Editable?) {
+            checkEmail()
+        }
+
+        private fun checkEmail() {
+            if (binding != null) {
+                if (Regex("^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$").containsMatchIn(
+                        binding!!.editTextTextEmailAddress.text
+                    )
+                ) {
+                    binding!!.button.isEnabled = true
+                    binding!!.button.setBackgroundResource(R.drawable.color_button)
+                } else {
+                    binding!!.button.isEnabled = false
+                    binding!!.button.setBackgroundResource(R.drawable.uncolor_button)
+                }
+            }
+
+        }
 
 }

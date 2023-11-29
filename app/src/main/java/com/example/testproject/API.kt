@@ -5,6 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 import java.io.Serializable
 
+
 data class PatientCard(
     var id : Int,
     var firstName : String?,
@@ -36,21 +37,16 @@ data class CatalogItem(
 interface APIIterface
 {
     @POST("api/SendCode")
-    fun SendCodeOnEmail(@Header("User-email") Users_email : String)
-            : Call<String>
+    fun SendCodeOnEmail(@Header("User-email") Users_email : String): Call<String>
 
     @POST("api/SignIn")
-    fun SendEnterCodeOnServer(@Header("User-email") Users_email : String
-                              , @Header("User-code") User_code : String)
-            : Call<String>
+    fun SendEnterCodeOnServer(@Header("User-email") Users_email : String, @Header("User-code") User_code : String) : Call<String>
 
     @GET("api/News")
-    fun GetAllNewsForUser()
-            : Call<MutableList<APINewsItem>>
+    fun GetAllNewsForUser() : Call<MutableList<APINewsItem>>
 
     @GET("api/Catalog")
-    fun GetAllCatalogItems()
-            : Call<MutableList<CatalogItem>>
+    fun GetAllCatalogItems() : Call<MutableList<CatalogItem>>
 }
 
 object RetrofitClient {
@@ -61,14 +57,9 @@ object RetrofitClient {
     {
         if(retrofit == null)
         {
-            val gson = GsonBuilder()
-                .setLenient()
-                .create()
+            val gson = GsonBuilder().setLenient().create()
 
-            retrofit = Retrofit.Builder()
-                .baseUrl(BaseURL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build()
+            retrofit = Retrofit.Builder().baseUrl(BaseURL).addConverterFactory(GsonConverterFactory.create(gson)).build()
 
         }
         return retrofit!!
